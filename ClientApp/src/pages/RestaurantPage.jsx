@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
-const RestaurantPage = () => {
+const RestaurantPage = props => {
+  console.log(props)
+  // const getRestaurantData = async ()
   return (
     <>
       <main className="restaurant-details">

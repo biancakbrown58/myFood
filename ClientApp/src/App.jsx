@@ -14,6 +14,7 @@ import HomePage from './pages/HomePage'
 
 import './custom.scss'
 import SearchPage from './pages/SearchPage'
+import AddRestaurant from './pages/AddRestaurant'
 export default class App extends Component {
   static displayName = App.name
 
@@ -41,6 +42,7 @@ export default class App extends Component {
           <Route exact path="/SearchPage" component={SearchPage} />
           <Route exact path="/ReviewPage" component={ReviewPage} />
           <Route exact path="/RestaurantPage" component={RestaurantPage} />
+          <Route exact path="/add" component={AddRestaurant} />
           <Route exact path="*" component={NotFound} />
         </Switch>
       </Layout>
