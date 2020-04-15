@@ -41,8 +41,13 @@ export default class App extends Component {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/SearchPage" component={SearchPage} />
           <Route exact path="/ReviewPage" component={ReviewPage} />
-          <Route exact path="/RestaurantPage" component={RestaurantPage} />
+          {/* <Route exact path="/RestaurantPage" component={RestaurantPage} /> */}
           <Route exact path="/add" component={AddRestaurant} />
+          <Route
+            exact
+            path="/restaurant/:restaurantId"
+            component={RestaurantPage}
+          />
           <Route exact path="*" component={NotFound} />
         </Switch>
       </Layout>

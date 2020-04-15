@@ -1,14 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+//like trail details
+
 const RestaurantPage = props => {
   console.log(props)
-  // const getRestaurantData = async ()
+  const restaurantId = props.match.params.restaurantId
+
+  const [restaurant, setRestaurant] = useState({})
+
+  const getRestaurantData = async () => {
+    const resp = await axios.get('/api/restaurant/' + restaurantId)
+    console.log(resp.data)
+    setRestaurant(resp.data)
+  }
+
+  useEffect(() => {
+    getRestaurantData()
+  }, [])
+
   return (
     <>
       <main className="restaurant-details">
-        <h4 className="restaurant-name">Restaurant Name</h4>
+        <h4 className="restaurant-name">{restaurant.name}</h4>
         <p>rating: ___ out of 5 stars</p>
         <p>menu items:</p>
         <ul>
