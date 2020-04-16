@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import RestaurantList from '../components/RestaurantList'
+import EmptyRestaurantList from '../components/EmptyRestaurantList'
 
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -29,11 +31,16 @@ const SearchPage = () => {
         </button>
       </section>
       <section>
-        <ul>
+        {/* <ul>
           {results.map(restaurant => {
             return <li>{restaurant.name}</li>
           })}
-        </ul>
+        </ul> */}
+        {results.length > 0 ? (
+          <RestaurantList results={results} />
+        ) : (
+          <EmptyRestaurantList />
+        )}
         <h3>Restaurant List here</h3>
         <ul>
           <li>Billys BBQ</li>
