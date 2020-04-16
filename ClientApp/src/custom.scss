@@ -58,9 +58,9 @@ main.hero {
   justify-content: space-around;
   background-color: #8dd4af;
   padding: 0.5rem;
-  margin-right: 15rem;
+  // margin-right: 15rem;
   border-radius: 0.5rem;
-  margin-left: 15rem;
+  // margin-left: 15rem;
   /* border: .25rem solid #379683; */
   list-style: none;
 }
@@ -77,5 +77,17 @@ main.hero {
 }
 
 .restaurant-details {
-  margin-left: 3rem;
+  // margin-left: 3rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.restaurant-name {
+  // border: 1rem solid green;
+  text-align: center;
+  border-bottom: 0.1rem solid black;
+  padding: 1rem;
+  font-weight: 700;
+  // width: 30%;
 }

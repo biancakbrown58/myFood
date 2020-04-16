@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-//like trail details
+//like trail details & trail
 
 const RestaurantPage = props => {
   console.log(props)
@@ -25,6 +25,11 @@ const RestaurantPage = props => {
       <main className="restaurant-details">
         <h4 className="restaurant-name">{restaurant.name}</h4>
         <p>rating: ___ out of 5 stars</p>
+        <p>{restaurant.foodType}</p>
+        <h6 className="location">{restaurant.address}</h6>
+        <h6 className="city-state">
+          {restaurant.city}, {restaurant.state}
+        </h6>
         <p>menu items:</p>
         <ul>
           <li>french fries make these clickable</li>

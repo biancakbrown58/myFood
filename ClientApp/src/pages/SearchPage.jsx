@@ -3,18 +3,37 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 const SearchPage = () => {
+  const [searchTerm, setSearchTerm] = useState('')
+  const [results, setResults] = useState([])
+
+  const searchButton = async () => {
+    const resp = await axios.get(
+      `/api/search/restaurant?searchTerm=${searchTerm}`
+    )
+    console.log(resp.data)
+    setResults(resp.data)
+  }
+
   return (
     <>
       <section className="search-container">
         <input
           className="search-box"
           type="search"
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
           placeholder="Find a Restaurant..."
         />
-        <button className="search-button">Search</button>
+        <button onClick={searchButton} className="search-button">
+          Search
+        </button>
       </section>
       <section>
-        <ul></ul>
+        <ul>
+          {results.map(restaurant => {
+            return <li>{restaurant.name}</li>
+          })}
+        </ul>
         <h3>Restaurant List here</h3>
         <ul>
           <li>Billys BBQ</li>
