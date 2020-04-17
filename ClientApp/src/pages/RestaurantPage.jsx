@@ -24,6 +24,7 @@ const RestaurantPage = props => {
     <>
       <main className="restaurant-details">
         <h4 className="restaurant-name">{restaurant.name}</h4>
+
         <p>rating: ___ out of 5 stars</p>
         <p>{restaurant.foodType}</p>
         <h6 className="location">{restaurant.address}</h6>
