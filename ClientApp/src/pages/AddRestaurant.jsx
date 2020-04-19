@@ -27,7 +27,6 @@ const AddRestaurant = () => {
         newRestaurantInfo: resp.data,
       })
     } else {
-      // blah
     }
   }
   if (wasSuccessfullyCreated.shouldRedirect) {

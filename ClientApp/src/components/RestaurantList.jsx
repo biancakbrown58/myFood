@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import RestaurantDetails from '../pages/RestaurantDetails'
 
 const RestaurantList = props => {
   let { results } = props
@@ -6,7 +8,11 @@ const RestaurantList = props => {
     <div>
       <ul>
         {results.map(restaurant => {
-          return <li>{restaurant.name}</li>
+          return (
+            <Link to="/restaurant/:restaurantId">
+              <li>{restaurant.name}</li>
+            </Link>
+          )
         })}
       </ul>
     </div>

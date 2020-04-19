@@ -10,11 +10,13 @@ import HeyWorld from './pages/_template/HeyWorld'
 import NotFound from './pages/NotFound'
 import ReviewPage from './pages/ReviewPage'
 import RestaurantPage from './pages/RestaurantPage'
+import RestaurantDetails from './pages/RestaurantDetails'
 import HomePage from './pages/HomePage'
 
 import './custom.scss'
 import SearchPage from './pages/SearchPage'
 import AddRestaurant from './pages/AddRestaurant'
+// import RestaurantDetails from './pages/RestaurantDetails'
 export default class App extends Component {
   static displayName = App.name
 
@@ -46,8 +48,13 @@ export default class App extends Component {
           <Route
             exact
             path="/restaurant/:restaurantId"
-            component={RestaurantPage}
+            component={RestaurantDetails}
           />
+          {/* <Route
+            exact
+            path="/restaurant/:restaurantId"
+            component={RestaurantPage}
+          /> */}
           <Route exact path="*" component={NotFound} />
         </Switch>
       </Layout>

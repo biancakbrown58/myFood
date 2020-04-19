@@ -11,6 +11,8 @@ namespace myFood.Models
 
     public DbSet<Restaurant> Restaurants { get; set; }
 
+    public DbSet<MenuItem> MenuItems { get; set; }
+
     private string ConvertPostConnectionToConnectionString(string connection)
     {
       var _connection = connection.Replace("postgres://", String.Empty);
