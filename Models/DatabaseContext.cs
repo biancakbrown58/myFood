@@ -12,6 +12,7 @@ namespace myFood.Models
     public DbSet<Restaurant> Restaurants { get; set; }
 
     public DbSet<MenuItem> MenuItems { get; set; }
+    public DbSet<Review> Reviews { get; set; }
 
     private string ConvertPostConnectionToConnectionString(string connection)
     {

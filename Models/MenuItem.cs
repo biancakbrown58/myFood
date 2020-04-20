@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
+
 namespace myFood.Models
 {
   public class MenuItem
@@ -8,6 +11,8 @@ namespace myFood.Models
     public int Rating { get; set; }
 
     public int RestaurantId { get; set; }
+    [JsonIgnore]
     public Restaurant Restaurant { get; set; }
+    public List<Review> Reviews { get; set; } = new List<Review>();
   }
 }

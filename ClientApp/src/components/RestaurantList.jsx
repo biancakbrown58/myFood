@@ -9,9 +9,11 @@ const RestaurantList = props => {
       <ul>
         {results.map(restaurant => {
           return (
-            <Link to="/restaurant/:restaurantId">
-              <li>{restaurant.name}</li>
-            </Link>
+            <>
+              <Link to={`/restaurant/${restaurant.id}`}>
+                <li>{restaurant.name}</li>
+              </Link>
+            </>
           )
         })}
       </ul>

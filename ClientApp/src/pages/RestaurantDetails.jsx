@@ -19,11 +19,6 @@ const RestaurantDetails = props => {
   useEffect(() => {
     getRestaurantData()
   }, [])
-  // if (restaurant) {
-  //   return <Restaurant restaurant={restaurant} />
-  // } else {
-  //   return
-  // }
 
   return (
     <>
