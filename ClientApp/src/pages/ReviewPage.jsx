@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import Restaurant from '../components/Restaurant'
@@ -6,9 +6,15 @@ import Restaurant from '../components/Restaurant'
 const ReviewPage = props => {
   // const { menuItemId } = props
   const menuItem = props.match.params.menuItemId
-
+  const [menuItems, setMenuItems] = useState({})
   const [review, setReview] = useState('')
   const [reviewScore, setReviewScore] = useState(0)
+
+  const getMenuItemData = async () => {
+    const resp = await axios.get(`/api/menuItem/${menuItem}`)
+    console.log(resp.data)
+    setMenuItems(resp.data)
+  }
 
   const sendReviewToApi = async () => {
     console.log(props)
@@ -18,13 +24,16 @@ const ReviewPage = props => {
     })
     console.log(resp.data)
   }
+  useEffect(() => {
+    getMenuItemData()
+  }, [])
 
   return (
     <>
       <main>
         <section>
           <h2>Reviews</h2>
-          <p>it was good</p>
+          <p>{menuItem.dish}</p>
           <p>tasted ok</p>
           <h3>What is your overall rating for this dish?</h3>
           <section className="star-rating">

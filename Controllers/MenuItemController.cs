@@ -31,7 +31,9 @@ namespace myFood.Controllers
     [HttpGet("{id}")]
     public async Task<ActionResult<MenuItem>> GetMenuItem(int id)
     {
-      var menuItem = await _context.MenuItems.FindAsync(id);
+      //get menu item and reviews
+      // var menuItem = await _context.MenuItems.FindAsync(id);
+      var menuItem = await _context.MenuItems.Include(menu => menu.Reviews).FirstOrDefaultAsync(f => f.Id == id);
 
       if (menuItem == null)
       {
