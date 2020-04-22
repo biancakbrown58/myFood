@@ -6,8 +6,11 @@ import axios from 'axios'
 
 const Restaurant = props => {
   const { restaurant } = props
+  const { menuItems } = props
   const [newMenuItem, setNewMenuItem] = useState('')
-  const [menuItems, setMenuItems] = useState(restaurant.menuItems)
+  const [newReviewText, setNewReviewText] = useState('')
+  const [reviewScore, setReviewScore] = useState(0)
+  //const [menuItems, setMenuItems] = useState(restaurant.menuItems)
 
   const sendMenuItemToApi = async () => {
     const resp = await axios.post(`/api/restaurant/${restaurant.id}/menuItem`, {
@@ -42,9 +45,12 @@ const Restaurant = props => {
             {restaurant.menuItems &&
               restaurant.menuItems.map(menuItems => {
                 return (
-                  <Link to={`/ReviewPage`}>
+                  <Link to={`/ReviewPage/${menuItems.id}`}>
                     <li>{menuItems.dish}</li>
                   </Link>
+                  // <Link to={`/ReviewPage`}>
+                  //   <li>{menuItems.dish}</li>
+                  // </Link>
                 )
               })}
           </ul>

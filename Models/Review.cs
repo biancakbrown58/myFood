@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace myFood.Models
 {
@@ -8,7 +9,10 @@ namespace myFood.Models
     public int Rating { get; set; }
     public string Comment { get; set; }
     public DateTime When { get; set; } = DateTime.Now;
+
     public int MenuItemId { get; set; }
+
+    [JsonIgnore]
     public MenuItem MenuItem { get; set; }
   }
 }
