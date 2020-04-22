@@ -33,7 +33,18 @@ const ReviewPage = props => {
       <main>
         <section>
           <h2>Reviews</h2>
-          <p>{menuItem.dish}</p>
+          <p>{menuItems.dish}</p>
+          <ul>
+            {menuItems.reviews &&
+              menuItems.reviews.map(reviews => {
+                return (
+                  <li>
+                    <p>{reviews.comment}</p>
+                    <p>{reviews.rating}</p>
+                  </li>
+                )
+              })}
+          </ul>
           <p>tasted ok</p>
           <h3>What is your overall rating for this dish?</h3>
           <section className="star-rating">
