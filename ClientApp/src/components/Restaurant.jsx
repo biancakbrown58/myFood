@@ -7,7 +7,9 @@ import axios from 'axios'
 const Restaurant = props => {
   const { restaurant } = props
   const { menuItems } = props
-  const [newMenuItem, setNewMenuItem] = useState('')
+  // const [newMenuItem, setNewMenuItem] = useState('')
+  const [newMenuItem, setNewMenuItem] = useState({})
+  const [newMenuDescription, setNewMenuDescription] = useState({})
   const [newReviewText, setNewReviewText] = useState('')
   const [reviewScore, setReviewScore] = useState(0)
   //const [menuItems, setMenuItems] = useState(restaurant.menuItems)
@@ -15,6 +17,7 @@ const Restaurant = props => {
   const sendMenuItemToApi = async () => {
     const resp = await axios.post(`/api/restaurant/${restaurant.id}/menuItem`, {
       dish: newMenuItem,
+      description: newMenuDescription,
     })
     console.log(resp.data)
   }
@@ -58,14 +61,25 @@ const Restaurant = props => {
         <section className="add-item-container">
           <p>Add Item</p>
           <input
-            name=""
+            name="dish"
             id=""
             type="text"
             onChange={e => setNewMenuItem(e.target.value)}
           />
+          {/* <input
+            name="dish"
+            id=""
+            type="text"
+            onChange={e => setNewMenuItem(e.target.value)}
+          /> */}
+          <input
+            name="description"
+            id=""
+            type="text"
+            onChange={e => setNewMenuDescription(e.target.value)}
+          />
           <button onClick={sendMenuItemToApi}>Add Item</button>
         </section>
-        <Link to="/ReviewPage">Review this item</Link>
       </main>
     </>
   )

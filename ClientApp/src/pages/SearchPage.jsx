@@ -49,7 +49,7 @@ const SearchPage = () => {
         </ul>
         <h5>A Restaurant</h5>
         <section>
-          <Link to="/RestaurantPage">View this Restaurant</Link>
+          {/* <Link to="/RestaurantPage">View this Restaurant</Link> */}
           <Link to="/add">Add a Restaurant</Link>
         </section>
       </section>

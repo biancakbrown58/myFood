@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import axios from 'axios'
+import StarRatingComponent from 'react-star-rating-component'
+// import StarRatings from './react-star-ratings'
 import { Redirect } from 'react-router-dom'
 import Restaurant from '../components/Restaurant'
+import ReviewAvgRating from '../components/ReviewAvgRating'
 
 const ReviewPage = props => {
   // const { menuItemId } = props
   const menuItem = props.match.params.menuItemId
   const [menuItems, setMenuItems] = useState({})
   const [review, setReview] = useState('')
-  const [reviewScore, setReviewScore] = useState(0)
+  // const [reviewScore, setReviewScore] = useState(0)
+  const [reviewScore, setReviewScore] = useState('')
+  const [reviewScore1, setReviewScore1] = useState(0)
 
   const getMenuItemData = async () => {
     const resp = await axios.get(`/api/menuItem/${menuItem}`)
@@ -19,11 +24,18 @@ const ReviewPage = props => {
   const sendReviewToApi = async () => {
     console.log(props)
     const resp = await axios.post(`/api/menuItem/${menuItem}/review`, {
-      rating: reviewScore,
+      rating: reviewScore + reviewScore1,
       comment: review,
     })
     console.log(resp.data)
   }
+  // const total = 0
+  //   for (let i = 0; i < reviews.length; i++) {
+  //     total += reviews[i].rating
+  //   }
+  //   const avg = total / reviews.length
+  //   return <>{avg}</>
+
   useEffect(() => {
     getMenuItemData()
   }, [])
@@ -32,65 +44,56 @@ const ReviewPage = props => {
     <>
       <main>
         <section>
-          <h2>Reviews</h2>
-          <p>{menuItems.dish}</p>
-          <ul>
+          <h5>Reviews</h5>
+          <h2 className="dish-name">{menuItems.dish}</h2>
+
+          <ul className="reviews">
             {menuItems.reviews &&
               menuItems.reviews.map(reviews => {
                 return (
                   <li>
                     <p>{reviews.comment}</p>
-                    <p>{reviews.rating}</p>
+                    <p>Total Rating: {reviews.rating}</p>
                   </li>
                 )
               })}
           </ul>
-          <p>tasted ok</p>
+          <h5>How would you rate the {menuItems.dish}?</h5>
           <h3>What is your overall rating for this dish?</h3>
-          <section className="star-rating">
-            <input
-              id="rating1"
-              type="radio"
-              name="rating"
-              value="1"
-              onChange={() => setReviewScore(1)}
-            />
-            <label htmlFor="rating1"></label>
-            <input
-              id="rating2"
-              type="radio"
-              name="rating"
-              value="2"
-              onChange={() => setReviewScore(2)}
-            />
-            <label htmlFor="rating2"></label>
-            <input
-              id="rating3"
-              type="radio"
-              name="rating"
-              value="3"
-              onChange={() => setReviewScore(3)}
-            />
-            <label htmlFor="rating3"></label>
-            <input
-              id="rating4"
-              type="radio"
-              name="rating"
-              value="4"
-              onChange={() => setReviewScore(4)}
-            />
-            <label htmlFor="rating4"></label>
-            <input
-              id="rating5"
-              type="radio"
-              name="rating"
-              value="5"
-              onChange={() => setReviewScore(5)}
-            />
-            <label htmlFor="rating5"></label>
-          </section>
+          <StarRatingComponent
+            name="rate"
+            starCount={5}
+            value={reviewScore}
+            onStarClick={setReviewScore}
+            onChange={setReviewScore}
+            emptyStarColor={`lightgrey`}
+            renderStarIcon={() => <span></span>}
+          />
 
-          <h3>How would you rate the taste</h3>
+          <p>ok</p>
+          <StarRatingComponent
+            name="rate"
+            starCount={5}
+            value={reviewScore1}
+            onStarClick={setReviewScore1}
+            onChange={setReviewScore1}
+            emptyStarColor={`lightgrey`}
+            renderStarIcon={() => <span></span>}
+          />
+          {/* too salty */}
+          {/* presentation */}
+          {/* taste */}
+          {/* portion */}
+          {/* soggy or crunchy */}
+          {/* too much sauce */}
+          {/* dry */}
+          {/* temperature */}
+          {/* would you order it again */}
+          {/* fresh */}
+          {/* was your meal cooked properly */}
+          {/* was the meal worth the price */}
+
+          <h3>Additional Comments?</h3>
           <textarea
             name="review"
             id=""
