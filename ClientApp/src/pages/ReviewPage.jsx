@@ -10,10 +10,13 @@ const ReviewPage = props => {
   // const { menuItemId } = props
   const menuItem = props.match.params.menuItemId
   const [menuItems, setMenuItems] = useState({})
-  const [review, setReview] = useState('')
+  const [review, setReview] = useState([])
   // const [reviewScore, setReviewScore] = useState(0)
-  const [reviewScore, setReviewScore] = useState('')
+  const [reviewScore, setReviewScore] = useState({ total: 0, averageScore: 0 })
   const [reviewScore1, setReviewScore1] = useState(0)
+  const [reviewScore2, setReviewScore2] = useState(0)
+  // const [average, setAverage] = useState(0)
+  // const [totals, setTotals] = useState(0)
 
   const getMenuItemData = async () => {
     const resp = await axios.get(`/api/menuItem/${menuItem}`)
@@ -22,23 +25,30 @@ const ReviewPage = props => {
   }
 
   const sendReviewToApi = async () => {
+    // e.preventDefault()
     console.log(props)
     const resp = await axios.post(`/api/menuItem/${menuItem}/review`, {
-      rating: reviewScore + reviewScore1,
+      // rating: reviewScore + reviewScore1 + reviewScore2 / 3,
+      // rating: average,
       comment: review,
     })
     console.log(resp.data)
   }
-  // const total = 0
-  //   for (let i = 0; i < reviews.length; i++) {
-  //     total += reviews[i].rating
-  //   }
-  //   const avg = total / reviews.length
-  //   return <>{avg}</>
 
   useEffect(() => {
     getMenuItemData()
   }, [])
+
+  // useEffect(() => {
+  //   getAverage()
+  // }, [reviewScore])
+  useEffect(() => {
+    const total = review.reduce((acc, item) => acc + parseInt(item.rating), 0)
+    const averageScore = total / review.length
+
+    setReviewScore({ total, averageScore })
+    console.log('avg is ' + total)
+  }, [review])
 
   return (
     <>
@@ -46,14 +56,23 @@ const ReviewPage = props => {
         <section>
           <h5>Reviews</h5>
           <h2 className="dish-name">{menuItems.dish}</h2>
-
+          <h4>
+            Total Reviews: {menuItems.reviews && menuItems.reviews.length}
+          </h4>
           <ul className="reviews">
             {menuItems.reviews &&
               menuItems.reviews.map(reviews => {
+                // let total = 0
+                // for (let i = 0; i < reviews.rating.length; i++) {
+                //   total += reviews.rating[i].rating
+                // }
+                // let avg = total / reviews.rating
                 return (
                   <li>
                     <p>{reviews.comment}</p>
-                    <p>Total Rating: {reviews.rating}</p>
+                    <p>{reviews.reviewScore}</p>
+                    {/* <p>Total Rating: {reviews.rating}</p>
+                    <p>avg: {reviews.rating / 3}</p> */}
                   </li>
                 )
               })}
@@ -77,6 +96,16 @@ const ReviewPage = props => {
             value={reviewScore1}
             onStarClick={setReviewScore1}
             onChange={setReviewScore1}
+            emptyStarColor={`lightgrey`}
+            renderStarIcon={() => <span></span>}
+          />
+          <p>ok</p>
+          <StarRatingComponent
+            name="rate"
+            starCount={5}
+            value={reviewScore2}
+            onStarClick={setReviewScore2}
+            onChange={setReviewScore2}
             emptyStarColor={`lightgrey`}
             renderStarIcon={() => <span></span>}
           />
