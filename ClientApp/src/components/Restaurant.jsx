@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import ReviewAvgRating from './ReviewAvgRating'
 
 // display the restaurant
 
 const Restaurant = props => {
   const { restaurant } = props
   const { menuItems } = props
+  const reviews = props
   // const [newMenuItem, setNewMenuItem] = useState('')
   const [newMenuItem, setNewMenuItem] = useState({})
   const [newMenuDescription, setNewMenuDescription] = useState({})
   const [newReviewText, setNewReviewText] = useState('')
   const [reviewScore, setReviewScore] = useState(0)
+
   //const [menuItems, setMenuItems] = useState(restaurant.menuItems)
 
   const sendMenuItemToApi = async () => {
@@ -41,19 +44,17 @@ const Restaurant = props => {
           <ul className="menu-items">
             <p>Menu Items:</p>
 
-            {/* <Link to={`/restaurant/${restaurant.id}`}>
-              <li>{restaurant.name}</li>
-            </Link> */}
-
             {restaurant.menuItems &&
               restaurant.menuItems.map(menuItems => {
                 return (
-                  <Link to={`/ReviewPage/${menuItems.id}`}>
-                    <li>{menuItems.dish}</li>
-                  </Link>
-                  // <Link to={`/ReviewPage`}>
-                  //   <li>{menuItems.dish}</li>
-                  // </Link>
+                  <>
+                    <Link to={`/ReviewPage/${menuItems.id}`}>
+                      <li>{menuItems.dish}</li>
+                    </Link>
+                    <p>
+                      <ReviewAvgRating reviews={reviews} />
+                    </p>
+                  </>
                 )
               })}
           </ul>
