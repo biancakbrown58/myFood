@@ -48,19 +48,19 @@ export class NavMenu extends Component {
             >
               <ul className="navbar-nav flex-grow">
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/">
+                  {/* <NavLink tag={Link} className="text-dark" to="/">
                     Home
-                  </NavLink>
+                  </NavLink> */}
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/SearchPage">
+                  {/* <NavLink tag={Link} className="text-dark" to="/SearchPage">
                     Search
-                  </NavLink>
+                  </NavLink> */}
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/typescript">
+                  {/* <NavLink tag={Link} className="text-dark" to="/typescript">
                     Typescript
-                  </NavLink>
+                  </NavLink> */}
                 </NavItem>
               </ul>
             </Collapse>

@@ -93,7 +93,10 @@ namespace myFood.Controllers
     public async Task<ActionResult> AddReview(int menuItemId, Review review)
     {
       //get menu item id
+      // get the restId 
+      var menuItem = await _context.MenuItems.FirstOrDefaultAsync(f => f.Id == menuItemId);
 
+      review.RestaurantId = menuItem.RestaurantId;
       review.MenuItemId = menuItemId;
       _context.Reviews.Add(review);
       await _context.SaveChangesAsync();

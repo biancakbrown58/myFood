@@ -7,7 +7,9 @@ const HomePage = () => {
     <>
       <main className="hero">
         <h1>Welcome to myFoods!</h1>
-        <Link to="/SearchPage">Search for Restaurants</Link>
+        <section className="search-link">
+          <Link to="/SearchPage">Search for Restaurants</Link>
+        </section>
       </main>
     </>
   )

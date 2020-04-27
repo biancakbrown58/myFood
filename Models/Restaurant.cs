@@ -12,7 +12,8 @@ namespace myFood.Models
     public string State { get; set; }
     public string FoodType { get; set; }
 
-    public List<MenuItem> MenuItems { get; set; } = new List<MenuItem>();
 
+    public List<MenuItem> MenuItems { get; set; } = new List<MenuItem>();
+    public List<Review> Reviews { get; set; } = new List<Review>();
   }
 }

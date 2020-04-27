@@ -42,31 +42,54 @@ const AddRestaurant = () => {
     return (
       <>
         <main>
-          <section>
-            <label htmlFor="">Name</label>
-            <input type="text" name="name" onChange={updateRestaurantData} />
+          <section className="add-rest">
+            <section>
+              {/* <label htmlFor="">Restaurant Name</label> */}
+              <input
+                type="text"
+                name="name"
+                placeholder="Restaurant Name"
+                onChange={updateRestaurantData}
+              />
+            </section>
+            <section>
+              {/* <label htmlFor="">Address</label> */}
+              <input
+                type="text"
+                name="address"
+                placeholder="Address"
+                onChange={updateRestaurantData}
+              />
+            </section>
+            <section>
+              {/* <label htmlFor="">City</label> */}
+              <input
+                type="text"
+                name="city"
+                placeholder="City"
+                onChange={updateRestaurantData}
+              />
+            </section>
+            <section>
+              {/* <label htmlFor="">State</label> */}
+              <input
+                type="text"
+                name="state"
+                placeholder="State"
+                onChange={updateRestaurantData}
+              />
+            </section>
+            <section>
+              {/* <label htmlFor="">Type of Food</label> */}
+              <input
+                type="text"
+                name="foodtype"
+                placeholder="Type of Food"
+                onChange={updateRestaurantData}
+              />
+            </section>
+            <button onClick={addRestaurantToApi}>Add Restaurant</button>
           </section>
-          <section>
-            <label htmlFor="">Address</label>
-            <input type="text" name="address" onChange={updateRestaurantData} />
-          </section>
-          <section>
-            <label htmlFor="">City</label>
-            <input type="text" name="city" onChange={updateRestaurantData} />
-          </section>
-          <section>
-            <label htmlFor="">State</label>
-            <input type="text" name="state" onChange={updateRestaurantData} />
-          </section>
-          <section>
-            <label htmlFor="">Type of Food</label>
-            <input
-              type="text"
-              name="foodtype"
-              onChange={updateRestaurantData}
-            />
-          </section>
-          <button onClick={addRestaurantToApi}>Add Restaurant</button>
         </main>
       </>
     )

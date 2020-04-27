@@ -41,16 +41,10 @@ const SearchPage = () => {
         ) : (
           <EmptyRestaurantList />
         )}
-        <h3>Restaurant List here</h3>
-        <ul>
-          <li>Billys BBQ</li>
-          <li>Sallys Sandwiches</li>
-          <li>Carols Cookies</li>
-        </ul>
-        <h5>A Restaurant</h5>
+
         <section>
           {/* <Link to="/RestaurantPage">View this Restaurant</Link> */}
-          <Link to="/add">Add a Restaurant</Link>
+          {/* <Link to="/add">Add a Restaurant</Link> */}
         </section>
       </section>
     </>

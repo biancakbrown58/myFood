@@ -9,10 +9,10 @@ import HelloWorld from './pages/_template/HelloWorld'
 import HeyWorld from './pages/_template/HeyWorld'
 import NotFound from './pages/NotFound'
 import ReviewPage from './pages/ReviewPage'
-import RestaurantPage from './pages/RestaurantPage'
+// import RestaurantPage from './pages/RestaurantPage'
 import RestaurantDetails from './pages/RestaurantDetails'
 import HomePage from './pages/HomePage'
-
+import FavoritesPage from './pages/FavoritesPage'
 import './custom.scss'
 import SearchPage from './pages/SearchPage'
 import AddRestaurant from './pages/AddRestaurant'
@@ -35,7 +35,7 @@ export default class App extends Component {
                 <Link to="/SearchPage">Search for a Restaurant</Link>
               </li>
               <li>
-                <Link to="/2">View Your Favorites</Link>
+                <Link to="/FavoritesPage">View Your Favorites</Link>
               </li>
             </ul>
           </nav>
@@ -50,6 +50,7 @@ export default class App extends Component {
             path="/restaurant/:restaurantId"
             component={RestaurantDetails}
           />
+          <Route exact path="/FavoritesPage" component={FavoritesPage} />
           <Route exact path="/ReviewPage/:menuItemId" component={ReviewPage} />
 
           <Route exact path="*" component={NotFound} />

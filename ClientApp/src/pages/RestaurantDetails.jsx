@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Restaurant from '../components/Restaurant'
 
-// get trail data
+//get restaurant data
 
 const RestaurantDetails = props => {
   console.log(props)

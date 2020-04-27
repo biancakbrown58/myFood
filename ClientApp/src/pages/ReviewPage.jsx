@@ -12,7 +12,6 @@ const ReviewPage = props => {
   const [review, setReview] = useState([])
 
   const [reviewScore, setReviewScore] = useState(0)
-  // const [reviewScore1, setReviewScore1] = useState(0)
   const [reviewScore2, setReviewScore2] = useState(0)
   const [reviewScore3, setReviewScore3] = useState(0)
   const [reviewScore4, setReviewScore4] = useState(0)
@@ -22,6 +21,7 @@ const ReviewPage = props => {
   const [reviewScore8, setReviewScore8] = useState(0)
   const [reviewScore9, setReviewScore9] = useState(0)
   const [reviewScore10, setReviewScore10] = useState(0)
+
   const getMenuItemData = async () => {
     const resp = await axios.get(`/api/menuItem/${menuItem}`)
     console.log(resp.data)
@@ -82,6 +82,7 @@ const ReviewPage = props => {
                     <p>{reviews.comment}</p>
                     {/* <p>{reviews.reviewScore}</p> */}
                     {/* <ReviewAvgRating reviews={reviews} /> */}
+                    <p>{console.log(reviews.rating, 'page display')}</p>
                     <p>Total Rating: {reviews.rating}</p>
                     {/* <p>avg: {reviews.rating / 3}</p> */}
                   </li>

@@ -5,14 +5,16 @@ import RestaurantDetails from '../pages/RestaurantDetails'
 const RestaurantList = props => {
   let { results } = props
   return (
-    <div>
+    <div className="rest-container">
       <ul>
         {results.map(restaurant => {
           return (
             <>
-              <Link to={`/restaurant/${restaurant.id}`}>
-                <li>{restaurant.name}</li>
-              </Link>
+              <section className="search-results">
+                <Link to={`/restaurant/${restaurant.id}`}>
+                  <li>{restaurant.name}</li>
+                </Link>
+              </section>
             </>
           )
         })}

@@ -29,17 +29,18 @@ code {
   width: 30rem;
   border-radius: 0.5rem;
   background-color: #edf5e1;
-  font-weight: 900;
+  font-weight: 300;
+  padding-left: 0.5rem;
   margin-bottom: 1rem;
 }
 
 .search-button {
   height: 2rem;
   width: 6rem;
-  border-radius: 0.25rem;
-  background-color: #05386b;
+  border-radius: 0.5rem;
+  background-color: #094886;
   color: #c9daea;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 main.hero {
@@ -52,7 +53,13 @@ main.hero {
   color: azure;
   flex-direction: column;
 }
-
+.search-link {
+  font-weight: 700;
+  background-color: azure;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  margin: 2rem;
+}
 .nav-bar ul {
   display: flex;
   justify-content: space-around;
@@ -75,7 +82,36 @@ main.hero {
   /* padding: 0rem; */
   /* border: 1rem solid green; */
 }
-
+.rest-container {
+  text-align: center;
+}
+.add-rest input {
+  // margin-left: 0.5rem;
+  width: 80%;
+  background-color: whitesmoke;
+  border-radius: 0.3rem;
+  // margin-bottom: 0.8rem;
+  margin: 0.5rem;
+  border: 0.1rem solid black;
+  padding: 0.5rem;
+}
+.add-rest {
+  // text-align: center;
+  display: flex;
+  // align-items: center;
+  // width: 100%;
+  // border: 1rem solid green;
+  flex-direction: column;
+  // justify-content: space-evenly;
+}
+.add-rest button {
+  background-color: #094886;
+  color: #c9daea;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  // width: 50%;
+  text-align: center;
+}
 .restaurant-details {
   // margin-left: 3rem;
   display: flex;
@@ -92,16 +128,44 @@ main.hero {
   // width: 30%;
 }
 .add-item-container {
+  padding-top: 0.5rem;
+  margin-top: 1rem;
   // border: 1rem solid red;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  padding-bottom: 0.5rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
+  background-color: #c9daea;
+  border: 0.09rem solid #094886;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .add-item-container p {
-  border-bottom: 0.1rem solid black;
+  margin-bottom: 1.5rem;
+}
+.add-item-container input {
+  border-radius: 0.2rem;
+  margin: 0.25rem;
+  width: 14rem;
+}
+.add-item-container button {
+  border-radius: 0.4rem;
+  margin-left: 0.5rem;
+  background-color: #8dd4af;
+  border: 0.05rem solid #094886;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .menu-items {
   list-style: none;
   text-align: center;
-
-  // border: 1rem solid green;
+  // border: 0.1rem solid greenyellow;
+}
+.menu-items li {
+  // border: 0.1rem solid greenyellow;
 }
 .dish-name {
   text-align: center;
@@ -117,4 +181,25 @@ main.hero {
   margin: 0.5rem;
   text-align: center;
   padding: 0;
+}
+.city-state {
+  font-size: 0.7rem;
+}
+.location {
+  font-size: 0.8rem;
+}
+.no-results {
+  text-align: center;
+}
+.add-restaurant-link {
+  padding-top: 1rem;
+}
+.search-results {
+  list-style: none;
+}
+.search-results li {
+  // border: 1rem solid green;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
