@@ -41,7 +41,6 @@ const Restaurant = props => {
           {restaurant.address} {restaurant.city}, {restaurant.state}
         </h6>
 
-        <p></p>
         <p className="menu">MENU</p>
         <section>
           <ul className="menu-items">
@@ -50,20 +49,30 @@ const Restaurant = props => {
                 return (
                   <>
                     <Link to={`/ReviewPage/${menuItems.id}`}>
-                      <li>{menuItems.dish}</li>
+                      <li>
+                        {menuItems.dish}:{' '}
+                        {restaurant.reviews && (
+                          <ReviewAvgRating reviews={restaurant.reviews} />
+                        )}
+                      </li>
                     </Link>
-                    {/* <p><ReviewAvgRating review={review} /></p> */}
+                    <p></p>
                   </>
                 )
               })}
           </ul>
 
           <ul>
-            {restaurant.reviews &&
+            {/* {restaurant.reviews &&
               restaurant.reviews.map(reviews => {
-                console.log(`${restaurant.reviews}blah`)
-                return <li>{restaurant.reviews.comment}ok</li>
-              })}
+                return (
+                  <li>
+                    {restaurant.reviews && (
+                      <ReviewAvgRating reviews={restaurant.reviews} />
+                    )}
+                  </li>
+                )
+              })} */}
           </ul>
         </section>
         <section className="add-item-container">

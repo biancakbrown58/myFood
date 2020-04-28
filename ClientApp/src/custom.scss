@@ -179,7 +179,8 @@ main.hero {
 .menu-items li {
   // border: 0.1rem solid greenyellow;
   font-size: 1.3rem;
-  font-weight: 100;
+  font-weight: 400;
+  color: black;
 }
 .dish-name {
   text-align: center;
@@ -221,10 +222,11 @@ main.hero {
   text-align: center;
 }
 .menu {
-  border-bottom: 1px solid #094886;
+  // border-bottom: 0.1rem solid #094886;
   margin-right: 18rem;
   margin-left: 18rem;
   font-size: 2rem;
+  // border: 1rem solid green;
 }
 .comment-area {
   display: flex;

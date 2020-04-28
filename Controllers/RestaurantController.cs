@@ -32,7 +32,7 @@ namespace myFood.Controllers
     public async Task<ActionResult<Restaurant>> GetRestaurant(int id)
     {
       // get menu items
-      var restaurant = await _context.Restaurants.Include(rest => rest.MenuItems).FirstOrDefaultAsync(j => j.Id == id);
+      var restaurant = await _context.Restaurants.Include(rest => rest.MenuItems).Include(rest => rest.Reviews).FirstOrDefaultAsync(j => j.Id == id);
 
       // also get reviews?????
 
@@ -45,17 +45,17 @@ namespace myFood.Controllers
     }
 
 
-    // [HttpGet("reviews")]
-    // public async Task<ActionResult<Restaurant>> GetRestaurantReview(int id)
-    // {
-    //   var restaurant = await _context.Restaurants.Include(rest => rest.Reviews).FirstOrDefaultAsync(r => r.Id == id);
+    [HttpGet("reviews")]
+    public async Task<ActionResult<Restaurant>> GetRestaurantReview(int id)
+    {
+      var restaurant = await _context.Restaurants.Include(rest => rest.Reviews).FirstOrDefaultAsync(r => r.Id == id);
 
-    //   if (restaurant == null)
-    //   {
-    //     return NotFound();
-    //   }
-    //   return restaurant;
-    // }
+      if (restaurant == null)
+      {
+        return NotFound();
+      }
+      return restaurant;
+    }
     // List<int> reviews = new List<int> { overallRating, sauceRating };
     // double average = reviews.Average();
     // Console.WriteLine("the average rating is {0}", average);

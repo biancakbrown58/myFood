@@ -27,7 +27,7 @@ namespace myFood.Models
     public MenuItem MenuItem { get; set; }
     public int RestaurantId { get; set; }
 
-
+    [JsonIgnore]
     public Restaurant Restaurant { get; set; }
   }
 }
