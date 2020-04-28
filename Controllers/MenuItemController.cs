@@ -42,6 +42,9 @@ namespace myFood.Controllers
 
       return menuItem;
     }
+    //  List<int> reviews = new List<int> { overallRating, sauceRating };
+    // double average = reviews.Average();
+    // Console.WriteLine("the average rating is {0}", average);
 
     // PUT: api/MenuItem/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for

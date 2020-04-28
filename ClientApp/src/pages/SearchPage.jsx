@@ -31,11 +31,6 @@ const SearchPage = () => {
         </button>
       </section>
       <section>
-        {/* <ul>
-          {results.map(restaurant => {
-            return <li>{restaurant.name}</li>
-          })}
-        </ul> */}
         {results.length > 0 ? (
           <RestaurantList results={results} />
         ) : (

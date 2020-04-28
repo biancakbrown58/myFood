@@ -122,10 +122,21 @@ main.hero {
 .restaurant-name {
   // border: 1rem solid green;
   text-align: center;
-  border-bottom: 0.1rem solid black;
-  padding: 1rem;
-  font-weight: 700;
+  border: 0.1rem dashed black;
+  background-color: rgb(238, 242, 253);
+  font-size: 2rem;
+  border-radius: 0.4rem;
+  padding-top: 1rem;
+  // padding: 0.5rem;
+  // font-weight: 00;
   // width: 30%;
+}
+.restaurant-name p {
+  font-size: 1rem;
+}
+.food-type {
+  font-size: 1.5rem;
+  text-align: center;
 }
 .add-item-container {
   padding-top: 0.5rem;
@@ -136,8 +147,8 @@ main.hero {
   padding-bottom: 0.5rem;
   margin-left: 15rem;
   margin-right: 15rem;
-  background-color: #c9daea;
-  border: 0.09rem solid #094886;
+  // background-color: #c9daea;
+  // border: 0.09rem solid #094886;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -162,22 +173,25 @@ main.hero {
 .menu-items {
   list-style: none;
   text-align: center;
+  // border-bottom: 0.1rem dashed #094886;
   // border: 0.1rem solid greenyellow;
 }
 .menu-items li {
   // border: 0.1rem solid greenyellow;
+  font-size: 1.3rem;
+  font-weight: 100;
 }
 .dish-name {
   text-align: center;
   margin: 0.5rem;
-  border: 1px solid red;
+  border: 1px solid #094886;
 }
 .reviews {
   list-style: none;
   padding: 0;
 }
 .reviews li {
-  border: 0.1rem solid black;
+  border: 0.1rem solid #8dd4af;
   margin: 0.5rem;
   text-align: center;
   padding: 0;
@@ -186,7 +200,8 @@ main.hero {
   font-size: 0.7rem;
 }
 .location {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  padding-top: 0.6rem;
 }
 .no-results {
   text-align: center;
@@ -195,11 +210,39 @@ main.hero {
   padding-top: 1rem;
 }
 .search-results {
-  list-style: none;
+  list-style: circle;
+  list-style-position: inside;
+  font-size: 1.5rem;
 }
 .search-results li {
   // border: 1rem solid green;
   padding: 0;
   margin: 0;
   text-align: center;
+}
+.menu {
+  border-bottom: 1px solid #094886;
+  margin-right: 18rem;
+  margin-left: 18rem;
+  font-size: 2rem;
+}
+.comment-area {
+  display: flex;
+  flex-direction: column;
+}
+.comment-area textarea {
+  width: 35rem;
+}
+.submit-review-button {
+  height: 2rem;
+  width: 10rem;
+  border-radius: 0.5rem;
+  background-color: #094886;
+  color: #c9daea;
+  font-weight: 500;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+}
+.ask-for-review {
+  padding-bottom: 1rem;
 }

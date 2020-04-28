@@ -31,7 +31,10 @@ namespace myFood.Controllers
     [HttpGet("{id}")]
     public async Task<ActionResult<Restaurant>> GetRestaurant(int id)
     {
+      // get menu items
       var restaurant = await _context.Restaurants.Include(rest => rest.MenuItems).FirstOrDefaultAsync(j => j.Id == id);
+
+      // also get reviews?????
 
       if (restaurant == null)
       {
@@ -40,6 +43,22 @@ namespace myFood.Controllers
 
       return restaurant;
     }
+
+
+    // [HttpGet("reviews")]
+    // public async Task<ActionResult<Restaurant>> GetRestaurantReview(int id)
+    // {
+    //   var restaurant = await _context.Restaurants.Include(rest => rest.Reviews).FirstOrDefaultAsync(r => r.Id == id);
+
+    //   if (restaurant == null)
+    //   {
+    //     return NotFound();
+    //   }
+    //   return restaurant;
+    // }
+    // List<int> reviews = new List<int> { overallRating, sauceRating };
+    // double average = reviews.Average();
+    // Console.WriteLine("the average rating is {0}", average);
 
     // PUT: api/Restaurant/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for

@@ -11,16 +11,16 @@ const ReviewPage = props => {
   const [menuItems, setMenuItems] = useState({})
   const [review, setReview] = useState([])
 
-  const [reviewScore, setReviewScore] = useState(0)
-  const [reviewScore2, setReviewScore2] = useState(0)
-  const [reviewScore3, setReviewScore3] = useState(0)
-  const [reviewScore4, setReviewScore4] = useState(0)
-  const [reviewScore5, setReviewScore5] = useState(0)
-  const [reviewScore6, setReviewScore6] = useState(0)
-  const [reviewScore7, setReviewScore7] = useState(0)
-  const [reviewScore8, setReviewScore8] = useState(0)
-  const [reviewScore9, setReviewScore9] = useState(0)
-  const [reviewScore10, setReviewScore10] = useState(0)
+  const [overallRating, setOverallRating] = useState(0)
+  const [flavorRating, setFlavorRating] = useState(0)
+  const [portionSizeRating, setPortionSizeRating] = useState(0)
+  const [textureRating, setTextureRating] = useState(0)
+  const [sauceRating, setSauceRating] = useState(0)
+  const [temperatureRating, setTemperatureRating] = useState(0)
+  const [freshRating, setFreshRating] = useState(0)
+  const [properlyCookedRating, setProperlyCookedRating] = useState(0)
+  const [orderAgainRating, setOrderAgainRating] = useState(0)
+  const [worthItRating, setWorthItRating] = useState(0)
 
   const getMenuItemData = async () => {
     const resp = await axios.get(`/api/menuItem/${menuItem}`)
@@ -31,17 +31,27 @@ const ReviewPage = props => {
   const sendReviewToApi = async () => {
     console.log(props)
     const resp = await axios.post(`/api/menuItem/${menuItem}/review`, {
-      rating:
-        reviewScore +
-        reviewScore2 +
-        reviewScore3 +
-        reviewScore4 +
-        reviewScore5 +
-        reviewScore6 +
-        reviewScore7 +
-        reviewScore8 +
-        reviewScore9 +
-        reviewScore10,
+      overallRating: overallRating,
+      flavorRating: flavorRating,
+      portionSizeRating: portionSizeRating,
+      textureRating: textureRating,
+      sauceRating: sauceRating,
+      temperatureRating: temperatureRating,
+      freshRating: freshRating,
+      properlyCookedRating: properlyCookedRating,
+      orderAgainRating: orderAgainRating,
+      worthItRating: worthItRating,
+      averageRating:
+        overallRating +
+        flavorRating +
+        portionSizeRating +
+        textureRating +
+        sauceRating +
+        temperatureRating +
+        freshRating +
+        properlyCookedRating +
+        orderAgainRating +
+        worthItRating,
       comment: review,
     })
     console.log(resp.data)
@@ -72,33 +82,27 @@ const ReviewPage = props => {
           <ul className="reviews">
             {menuItems.reviews &&
               menuItems.reviews.map(reviews => {
-                // let total = 0
-                // for (let i = 0; i < reviews.rating.length; i++) {
-                //   total += reviews.rating[i].rating
-                // }
-                // let avg = total / reviews.rating
                 return (
                   <li>
                     <p>{reviews.comment}</p>
-                    {/* <p>{reviews.reviewScore}</p> */}
-                    {/* <ReviewAvgRating reviews={reviews} /> */}
-                    <p>{console.log(reviews.rating, 'page display')}</p>
-                    <p>Total Rating: {reviews.rating}</p>
-                    {/* <p>avg: {reviews.rating / 3}</p> */}
+                    <p>{console.log(reviews.averageRating, 'page display')}</p>
+                    <p>Total Rating: {reviews.averageRating}</p>
                   </li>
                 )
               })}
           </ul>
 
-          <h5>How would you rate the {menuItems.dish}?</h5>
+          <h5 className="ask-for-review">
+            How would you rate the {menuItems.dish}?
+          </h5>
 
           <h6>What is your overall rating for this dish?</h6>
           <StarRatingComponent
             name="rate"
             starCount={5}
-            value={reviewScore}
-            onStarClick={setReviewScore}
-            onChange={setReviewScore}
+            value={overallRating}
+            onStarClick={setOverallRating}
+            onChange={setOverallRating}
             emptyStarColor={`lightgrey`}
           />
 
@@ -106,106 +110,97 @@ const ReviewPage = props => {
           <StarRatingComponent
             name="rate"
             starCount={5}
-            value={reviewScore2}
-            onStarClick={setReviewScore2}
-            onChange={setReviewScore2}
+            value={flavorRating}
+            onStarClick={setFlavorRating}
+            onChange={setFlavorRating}
             emptyStarColor={`lightgrey`}
           />
           <h6>How was the portion size? </h6>
           <StarRatingComponent
             name="rate"
             starCount={5}
-            value={reviewScore3}
-            onStarClick={setReviewScore3}
-            onChange={setReviewScore3}
+            value={portionSizeRating}
+            onStarClick={setPortionSizeRating}
+            onChange={setPortionSizeRating}
             emptyStarColor={`lightgrey`}
           />
           <h6>How was the texture? Crunchy/Soggy </h6>
           <StarRatingComponent
             name="rate"
             starCount={5}
-            value={reviewScore4}
-            onStarClick={setReviewScore4}
-            onChange={setReviewScore4}
+            value={textureRating}
+            onStarClick={setTextureRating}
+            onChange={setTextureRating}
             emptyStarColor={`lightgrey`}
           />
           <h6>Was there the right amount of sauce/was it too dry? </h6>
           <StarRatingComponent
             name="rate"
             starCount={5}
-            value={reviewScore5}
-            onStarClick={setReviewScore5}
-            onChange={setReviewScore5}
+            value={sauceRating}
+            onStarClick={setSauceRating}
+            onChange={setSauceRating}
             emptyStarColor={`lightgrey`}
           />
           <h6>How was the temperature of the dish?</h6>
           <StarRatingComponent
             name="rate"
             starCount={5}
-            value={reviewScore6}
-            onStarClick={setReviewScore6}
-            onChange={setReviewScore6}
+            value={temperatureRating}
+            onStarClick={setTemperatureRating}
+            onChange={setTemperatureRating}
             emptyStarColor={`lightgrey`}
           />
           <h6>Were the ingredients fresh? </h6>
           <StarRatingComponent
             name="rate"
             starCount={5}
-            value={reviewScore7}
-            onStarClick={setReviewScore7}
-            onChange={setReviewScore7}
+            value={freshRating}
+            onStarClick={setFreshRating}
+            onChange={setFreshRating}
             emptyStarColor={`lightgrey`}
           />
           <h6>Was it cooked/assembled properly? </h6>
           <StarRatingComponent
             name="rate"
             starCount={5}
-            value={reviewScore8}
-            onStarClick={setReviewScore8}
-            onChange={setReviewScore8}
+            value={properlyCookedRating}
+            onStarClick={setProperlyCookedRating}
+            onChange={setProperlyCookedRating}
             emptyStarColor={`lightgrey`}
           />
           <h6>Would you order it again? </h6>
           <StarRatingComponent
             name="rate"
             starCount={5}
-            value={reviewScore9}
-            onStarClick={setReviewScore9}
-            onChange={setReviewScore9}
+            value={orderAgainRating}
+            onStarClick={setOrderAgainRating}
+            onChange={setOrderAgainRating}
             emptyStarColor={`lightgrey`}
           />
           <h6>Was it worth the cost? </h6>
           <StarRatingComponent
             name="rate"
             starCount={5}
-            value={reviewScore10}
-            onStarClick={setReviewScore10}
-            onChange={setReviewScore10}
+            value={worthItRating}
+            onStarClick={setWorthItRating}
+            onChange={setWorthItRating}
             emptyStarColor={`lightgrey`}
           />
-          {/* X too salty */}
-          {/* X presentation */}
-          {/* X portion */}
-          {/* X soggy or crunchy */}
-          {/* X too much sauce */}
-          {/* X dry */}
-          {/* X temperature */}
-          {/* X would you order it again */}
-          {/* X fresh */}
-          {/* X was your meal cooked properly */}
-          {/* X was the meal worth the price */}
-
-          <h3>Additional Comments?</h3>
-          <textarea
-            name="review"
-            id=""
-            cols="30"
-            rows="10"
-            value={review}
-            onChange={e => setReview(e.target.value)}
-          ></textarea>
-          <button onClick={sendReviewToApi}>Submit Review</button>
-          <h3></h3>
+          <section className="comment-area">
+            <h3>Additional Comments?</h3>
+            <textarea
+              name="review"
+              id=""
+              cols="30"
+              rows="5"
+              value={review}
+              onChange={e => setReview(e.target.value)}
+            ></textarea>
+            <button className="submit-review-button" onClick={sendReviewToApi}>
+              Submit Review
+            </button>
+          </section>
         </section>
       </main>
     </>
